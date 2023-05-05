@@ -1,0 +1,67 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:Apps.Atlas.Gui.ViewModels"
+        x:Class="Apps.Atlas.Gui.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Width="800"
+        Height="400"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="Avalonia Lecture">
+    
+    <Window.Styles>
+        <Style Selector="Button">
+            <Setter Property="Background" Value="Blue"></Setter>
+            <Setter Property="Foreground" Value="White"></Setter>
+        </Style>
+        
+        <!-- button hover -->
+        <Style Selector="Button:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Background" Value="Green"></Setter>
+            <Setter Property="Button.Foreground" Value="White"></Setter>
+        </Style>
+        
+        <!-- button pressed -->
+        <Style Selector="Button:pressed /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Background" Value="red"></Setter>
+            <Setter Property="Button.Foreground" Value="White"></Setter>
+        </Style>
+        
+        <!-- button disabled -->
+        <Style Selector="Button:disabled /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Background" Value="Purple"></Setter>
+            <Setter Property="Button.Foreground" Value="White"></Setter>
+        </Style>
+        
+    </Window.Styles>
+
+    <Grid ColumnDefinitions="Auto *">
+        <Grid Grid.Column="0" Width="150" Background="Gray">
+            <StackPanel HorizontalAlignment="Center" Margin="0 10 0 0">
+                
+                <!-- Foreground="Azure" -->
+                <Button 
+                    Content="First Page" 
+                    Width="120" 
+                    Margin="0 0 0 10"
+                    Command="{Binding ToFirstPageCommand}"
+                    />
+                <Button 
+                    Content="Second Page" 
+                    Width="120"
+                    Margin="0 0 0 10"
+                    Command="{Binding ToSecondPageCommand}"
+                    />
+                <Button 
+                    Content="Open File" 
+                    Width="120"
+                    Command="{Binding GetFilePathCommand}"
+                    />
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Column="1">
+            <UserControl Content="{Binding CurrentPage}" /> 
+        </Grid>
+    </Grid>
+
+
+</Window>

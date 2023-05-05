@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AvaloniaProject">
+    <option name="projectPerEditor">
+      <map>
+        <entry key="Apps.Atlas.Gui/App.axaml" value="Apps.Atlas.Gui/Apps.Atlas.Gui.csproj" />
+        <entry key="Apps.Atlas.Gui/Views/FirstPage.axaml" value="Apps.Atlas.Gui/Apps.Atlas.Gui.csproj" />
+        <entry key="Apps.Atlas.Gui/Views/FirstPageView.axaml" value="Apps.Atlas.Gui/Apps.Atlas.Gui.csproj" />
+        <entry key="Apps.Atlas.Gui/Views/MainWindow.axaml" value="Apps.Atlas.Gui/Apps.Atlas.Gui.csproj" />
+        <entry key="Apps.Atlas.Gui/Views/SecondPageView.axaml" value="Apps.Atlas.Gui/Apps.Atlas.Gui.csproj" />
+      </map>
+    </option>
+  </component>
+</project>

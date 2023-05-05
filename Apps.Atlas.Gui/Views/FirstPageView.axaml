@@ -1,0 +1,8 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="Apps.Atlas.Gui.Views.FirstPageView"
+             xmlns:vm="using:Apps.Atlas.Gui.ViewModels"
+             x:DataType="vm:FirstPageViewModel"
+             >
+    <TextBlock Text="{Binding Greeting}" VerticalAlignment="Center" HorizontalAlignment="Center" />
+</UserControl>
