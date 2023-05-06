@@ -9,6 +9,7 @@
 
 ## TODO
 
+- [x] Add DB ORM
+- [x] Add Threading with Async
 - [ ] Add scottplot 
-- [ ] Add DB ORM
 

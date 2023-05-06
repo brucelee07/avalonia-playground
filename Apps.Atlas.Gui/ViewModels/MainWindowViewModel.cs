@@ -6,6 +6,7 @@ using Apps.Atlas.Gui.Models;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
+using Avalonia.Threading;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.EntityFrameworkCore;
@@ -22,13 +23,13 @@ public partial class MainWindowViewModel : ViewModelBase
     {
         CurrentPage = _firstView;
 
-        using (AtlasContext context = new AtlasContext())
-        {
-            int id = 3;
-            string name = "third entry";
-            context.Products.Add(new Product() { ProductId = id, Name = name});
-            context.SaveChanges();
-        }
+        // using (AtlasContext context = new AtlasContext())
+        // {
+        //     int id = 3;
+        //     string name = "third entry";
+        //     context.Products.Add(new Product() { ProductId = id, Name = name});
+        //     context.SaveChanges();
+        // }
     }
 
     [ObservableProperty]
@@ -53,6 +54,8 @@ public partial class MainWindowViewModel : ViewModelBase
             var products = context.Products.ToList();
             Console.WriteLine(products[0].Name);
         }
+        
+        // Dispatcher.UIThread.Post(() => LongRunningTask(), DispatcherPriority.Background);
     }
 
     
@@ -106,6 +109,17 @@ public partial class MainWindowViewModel : ViewModelBase
         }
         
     }
+
+    async Task LongRunningTask()
+    {
+       // update properties 
+       Console.WriteLine("start task");
+       await Task.Delay(1000);
+       Console.WriteLine("end task");
+    }
+    
+    
+    
     
     
 }
