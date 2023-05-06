@@ -24,8 +24,8 @@ public partial class MainWindowViewModel : ViewModelBase
 
         using (AtlasContext context = new AtlasContext())
         {
-            int id = 2;
-            string name = "second entry";
+            int id = 3;
+            string name = "third entry";
             context.Products.Add(new Product() { ProductId = id, Name = name});
             context.SaveChanges();
         }
@@ -81,6 +81,30 @@ public partial class MainWindowViewModel : ViewModelBase
     private bool CanToFirstPage()
     {
         return CurrentPage is not FirstPageViewModel;
+    }
+
+    private void update(int id)
+    {
+        
+        using (AtlasContext context = new AtlasContext())
+        {
+            Product product = context.Products.Find(id);
+            product.Name = "New Name";
+            context.SaveChanges();
+        }
+        
+    }
+    
+    private void delete(int id)
+    {
+        
+        using (AtlasContext context = new AtlasContext())
+        {
+            Product product = context.Products.Find(id);
+            context.Remove(product);
+            context.SaveChanges();
+        }
+        
     }
     
     
