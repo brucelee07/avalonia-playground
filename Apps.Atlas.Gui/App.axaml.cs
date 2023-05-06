@@ -1,8 +1,10 @@
+using Apps.Atlas.Gui.Data;
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
 using Apps.Atlas.Gui.ViewModels;
 using Apps.Atlas.Gui.Views;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 
 namespace Apps.Atlas.Gui;
 
@@ -25,5 +27,8 @@ public partial class App : Application
         }
 
         base.OnFrameworkInitializationCompleted();
+
+        DatabaseFacade facade = new DatabaseFacade(new AtlasContext());
+        facade.EnsureCreated();
     }
 }

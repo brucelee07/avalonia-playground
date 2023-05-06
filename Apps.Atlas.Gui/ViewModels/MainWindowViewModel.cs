@@ -1,10 +1,14 @@
 ﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
+using Apps.Atlas.Gui.Data;
+using Apps.Atlas.Gui.Models;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Microsoft.EntityFrameworkCore;
 
 namespace Apps.Atlas.Gui.ViewModels;
 
@@ -17,6 +21,14 @@ public partial class MainWindowViewModel : ViewModelBase
     public MainWindowViewModel()
     {
         CurrentPage = _firstView;
+
+        using (AtlasContext context = new AtlasContext())
+        {
+            int id = 2;
+            string name = "second entry";
+            context.Products.Add(new Product() { ProductId = id, Name = name});
+            context.SaveChanges();
+        }
     }
 
     [ObservableProperty]
@@ -35,6 +47,12 @@ public partial class MainWindowViewModel : ViewModelBase
     private void ToSecondPage()
     {
         CurrentPage = _secondView;
+        
+        using (AtlasContext context = new AtlasContext())
+        {
+            var products = context.Products.ToList();
+            Console.WriteLine(products[0].Name);
+        }
     }
 
     
